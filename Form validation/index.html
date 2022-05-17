@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div name="form">
+        <h1>Registration Form</h1>
+        <ul>
+        <li>Name : <input type="text" id="name" placeholder="Enter Your Name" ></li><br>
+        <li>Email : <input type="text" id="email" placeholder="Enter Your Email" ></li><br>
+        <li>Password : <input type="password" id="password" placeholder="Enter Your Password" ></li><br>
+        <li>Mobile Number : <input type="text" id="mob" placeholder="Enter Your Mobile Number" ></li><br>
+        <button type="submit" onclick="On_Submit()">Submit</button>
+        </ul>
+    </div>
+    <script type="text/javascript" >
+		function On_Submit() {
+			let name = document.getElementById("name");
+			if(name.value.length === 0) {
+				alert("Name is required");
+
+			}
+
+			let email = document.getElementById("email"); 
+			if(email.value.length === 0) {
+				alert("Email is required");
+
+				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				if(email.value.match(mailformat))
+				{
+					return true;
+				}
+				else
+				{
+					alert("You have entered an invalid email address!");
+					document.form.email.focus();
+					return false;
+				}
+			}
+
+			let password = document.getElementById("password");
+			if(password.value.length < 8) {
+				alert("Password must be at least 8 characters long");
+			}
+
+			let mobno = document.getElementById("mob");
+			if(mobno.value.length === 0) {
+				alert("Mobile number is required");
+
+				var phoneno = /^\d{10}$/;
+				if(mobno.value.match(phoneno))
+				{
+					return true;
+				}
+				else
+				{
+					alert("Invalid Mobile Number");
+					return false;
+				}
+			}
+
+			alert("Form successfully submitted");
+			
+			
+		}
+		
+    </script>
+</body>
+</html>
